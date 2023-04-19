@@ -22,6 +22,8 @@ Rules for commit messages:
 - `feat(ISSUE-1): <short_description>`
 - `chore(ISSUE-1): <short_description>`
 
+## Brief history
+
 This package is based on [unzip](https://github.com/EvanOxfeld/node-unzip) (and its fork [unzipper](https://github.com/ZJONSSON/node-unzipper)) and provides simple APIs for parsing and extracting zip files. It uses new streaming engine which allows it to process also files which would fail with unzip.
 There are no added compiled dependencies - inflation is handled by node.js's built in zlib support.
 

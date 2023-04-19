@@ -15,3 +15,9 @@ yarn.lock
 .npmrc
 .husky
 src
+.eslintrc.js
+.prettierrc.js
+.release-it.json
+.github
+scripts
+commitlint.config.js
