@@ -19,6 +19,10 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
+      - name: Configuring Git
+        run: |
+          git config user.name "daniyel"
+          git config user.email "danijel.h@gmail.com"
       - name: Prepare dependencies
         run: npm install --ignore-scripts
       - name: Release

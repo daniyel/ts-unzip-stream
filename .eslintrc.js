@@ -95,5 +95,5 @@ module.exports = {
     eqeqeq: 'error',
     'max-lines': [1, 180],
   },
-  ignorePatterns: ['jest.config.js'],
+  ignorePatterns: ['jest.config.js', 'scripts/lint-branch-name.js'],
 };
