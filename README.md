@@ -2,7 +2,7 @@
 
 Streaming cross-platform unzip tool written in node.js.
 
-This package is based on [unzip-stream](https://github.com/mhr3/unzip-stream). Some of PRs opened in the original repo have been merge into this one. Also proejct was updated and converted to TypeScript.
+This package is based on [unzip-stream](https://github.com/mhr3/unzip-stream). Some of PRs opened in the original repo have been merged into this one. Also project was updated and converted to TypeScript.
 
 Any contributions are welcomed.
 
