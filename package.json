@@ -1,0 +1,78 @@
+{
+  "name": "ts-unzip-stream",
+  "version": "0.3.5",
+  "description": "Process zip files using streaming API",
+  "author": "Danijel Hrvacanin <danijel.h@gmail.com>",
+  "maintainers": [
+    {
+      "name": "Danijel Hrvacanin",
+      "email": "danijel.h@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daniyel/ts-unzip-stream.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "binary": "^0.3.0",
+    "fs-extra": "^11.1.1"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^17.6.1",
+    "@getify/eslint-plugin-proper-ternary": "^3.1.1",
+    "@types/fs-extra": "^11.0.1",
+    "@types/jest": "^29.5.1",
+    "@types/temp": "^0.9.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "commitlint": "^17.6.1",
+    "eslint": "^8.38.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "glob": "^10.1.0",
+    "husky": "^8.0.3",
+    "jest": "^29.5.0",
+    "lint-staged": "^13.2.1",
+    "release-it": "^15.10.1",
+    "temp": "^0.9.4",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
+  },
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "keywords": [
+    "zip",
+    "unzip",
+    "zlib",
+    "uncompress",
+    "archive",
+    "stream",
+    "extract",
+    "typescript"
+  ],
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "lint-staged": "lint-staged",
+    "release-it": "release-it",
+    "lint-branch-name": "node ./scripts/lint-branch-name.js",
+    "commitlint": "commitlint",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint ./src --ext .ts,.js",
+    "pretty": "prettier --check ./src",
+    "pretty:fix": "prettier --write ./src",
+    "lint:fix": "npm run lint -- --fix",
+    "build": "tsc"
+  },
+  "lint-staged": {
+    "src/**/*.(js|ts)": [
+      "npm run lint",
+      "npm run pretty",
+      "npm run test"
+    ]
+  }
+}

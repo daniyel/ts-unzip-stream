@@ -1,0 +1,22 @@
+name: Publish Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    if: "!startsWith(github.event.head_commit.message, 'chore(release):')"
+    steps:
+      - run: sudo timedatectl set-timezone Europe/Berlin
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Configuring Git
+      - name: Prepare dependencies
+        run: npm install --ignore-scripts
+      - name: Release
+        run: npm run release-it -- --ci

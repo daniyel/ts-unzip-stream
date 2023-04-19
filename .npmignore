@@ -1,0 +1,17 @@
+.idea
+testData
+.history
+node_modules
+.log
+.idea
+.vscode
+ssh
+coverage
+junit.xml
+package-lock.json
+yarn-error.log
+yarn.lock
+.DS_Store
+.npmrc
+.husky
+src
