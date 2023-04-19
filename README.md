@@ -1,6 +1,10 @@
-# unzip-stream
+# ts-unzip-stream
 
 Streaming cross-platform unzip tool written in node.js.
+
+This package is based on [unzip-stream](https://github.com/mhr3/unzip-stream). Some of PRs opened in the original repo have been merge into this one. Also proejct was updated and converted to TypeScript.
+
+Any contributions are welcomed.
 
 This package is based on [unzip](https://github.com/EvanOxfeld/node-unzip) (and its fork [unzipper](https://github.com/ZJONSSON/node-unzipper)) and provides simple APIs for parsing and extracting zip files. It uses new streaming engine which allows it to process also files which would fail with unzip.
 There are no added compiled dependencies - inflation is handled by node.js's built in zlib support.
@@ -10,7 +14,7 @@ Please note that the zip file format isn't really meant to be processed by strea
 ## Installation
 
 ```bash
-> npm install @instamotion/unzip-stream
+> npm install ts-unzip-stream
 ```
 
 ## Quick Examples
@@ -19,15 +23,15 @@ Please note that the zip file format isn't really meant to be processed by strea
 
 Process each zip file entry or pipe entries to another stream.
 
-__Important__: If you do not intend to consume an entry stream's raw data, call autodrain() to dispose of the entry's
+__Important__: If you do not intend to consume an entry stream's raw data, call `autodrain()` to dispose of the entry's
 contents. Otherwise the stream will get stuck.
 
-```javascript
-const fs = require('fs');
-const unzip = require('@instamotion/unzip');
+```TypeScript
+import fs from 'fs';
+import { Parse } from 'ts-unzip-stream';
 
 fs.createReadStream('path/to/archive.zip')
-  .pipe(new unzip.Parse())
+  .pipe(new Parse())
   .on('entry', (entry) => {
     const { path: filePath, type, size } = entry;
     if (filePath === `this IS the file I'm looking for`) {
@@ -40,14 +44,14 @@ fs.createReadStream('path/to/archive.zip')
 
 ### Parse zip by piping entries downstream
 
-If you `pipe` from unzip-stream the downstream components will receive each `entry` for further processing.   This allows for clean pipelines transforming zipfiles into unzipped data.
+If you `pipe` from unzip-stream the downstream components will receive each `entry` for further processing. This allows for clean pipelines transforming zipfiles into unzipped data.
 
 Example using `stream.Transform`:
 
-```javascript
-const fs = require('fs');
-const stream = require('stream');
-const unzip = require('@instamotion/unzip');
+```TypeScript
+import fs from 'fs';
+import stream from 'stream';
+import unzip from 'ts-unzip-stream';
 
 fs.createReadStream('path/to/archive.zip')
   .pipe(new unzip.Parse())
@@ -71,15 +75,15 @@ fs.createReadStream('path/to/archive.zip')
 ### Extract to a directory
 
 ```javascript
-const fs = require('fs');
-const unzip = require('@instamotion/unzip');
+import fs from 'fs';
+import { Extract } from 'ts-unzip-stream';
 
 fs.createReadStream('path/to/archive.zip').pipe(
-  new unzip.Extract({ path: 'output/path' })
+  new Extract({ path: 'output/path' })
 );
 ```
 
-Extract will emit the 'close' event when the archive is fully extracted, do NOT use the 'finish' event, which can be emitted before the writing finishes.
+Extract will emit the `close` event when the archive is fully extracted, do NOT use the `finish` event, which can be emitted before the writing finishes.
 
 ### Extra options
 
@@ -88,10 +92,10 @@ The `Parse` and `Extract` methods allow passing an object with `decodeString` pr
 Example with `iconv-lite`:
 
 ```javascript
-const unzip = require('@instamotion/unzip');
-const iconvLite = require('iconv-lite');
+import { Parse } from 'ts-unzip-stream';
+import iconvLite from 'iconv-lite';
 
-let parser = new unzip.Parse({
+let parser = new Parse({
   decodeString: (buffer) => {
     return iconvLite.decode(buffer, 'iso-8859-2');
   }
