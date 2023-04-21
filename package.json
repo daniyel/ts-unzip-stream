@@ -1,6 +1,6 @@
 {
   "name": "ts-unzip-stream",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Process zip files using streaming API",
   "author": "Danijel Hrvacanin <danijel.h@gmail.com>",
   "maintainers": [
